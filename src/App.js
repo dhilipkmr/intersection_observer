@@ -1,24 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import WithVisibleItemsCount from "./WithVisibleItemsCount";
+import ListRenderer from "./ListRenderer";
 
+const MY_ENDLESS_LIST = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>Creating Lazy Loader</h1>
+      <WithVisibleItemsCount
+        render={props => {
+          const {visibleItemsCount, bottomRef, rootRef} = props;
+          const visibleListItems = MY_ENDLESS_LIST.slice(0, visibleItemsCount);
+          return <ListRenderer list={visibleListItems} bottomRef={bottomRef} rootRef={rootRef}/>;
+        }}
+      />
     </div>
   );
 }
