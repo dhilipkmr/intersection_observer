@@ -1,21 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import WithVisibleItemsCount from "./WithVisibleItemsCount";
-import ListRenderer from "./ListRenderer";
-
-const MY_ENDLESS_LIST = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K","A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
+import SlidingWindowScroll from "./SlidingWindowScroll";
+// import ListRenderer from "./ListRenderer";
+import MY_ENDLESS_LIST from './Constants';
 function App() {
   return (
     <div className="App">
-     <h1>Creating Lazy Loader</h1>
-      <WithVisibleItemsCount
-        render={props => {
-          const {visibleItemsCount, bottomRef, rootRef} = props;
-          const visibleListItems = MY_ENDLESS_LIST.slice(0, visibleItemsCount);
-          return <ListRenderer list={visibleListItems} bottomRef={bottomRef} rootRef={rootRef}/>;
-        }}
-      />
+     <h1>Sliding Window Infinite Scroll</h1>
+      <SlidingWindowScroll list={MY_ENDLESS_LIST}/>
     </div>
   );
 }
