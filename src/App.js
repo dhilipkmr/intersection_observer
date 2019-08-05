@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
      <h1>Sliding Window Infinite Scroll</h1>
-      <SlidingWindowScroll list={MY_ENDLESS_LIST}/>
+      <SlidingWindowScroll list={MY_ENDLESS_LIST} height={195}/>
     </div>
   );
 }
